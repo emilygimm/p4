@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     AWS_REGION: "us-west-2"
-    CHROME_BIN: "/usr/bin/chromium-browser"
+    CHROME_BIN: "/usr/bin/chromium-browser"  # Remove if not needed
 
 phases:
   install:
@@ -11,14 +11,14 @@ phases:
       nodejs: 20
   pre_build:
     commands:
-      - echo Install npm dependencies
+      - echo "Install npm dependencies"
       - npm install
-      - gem install rake
+      # - gem install rake  # Remove if not necessary
   build:
     commands:
-      - echo Running Test
+      - echo "Running Tests"
       - npm run build
   post_build:
     commands:
+      - echo "Uploading Code Coverage"
       - ./node_modules/.bin/codecov -f coverage/*.json -t e89a5f73-fd56-45de-8799-009a19bde63c
-    
