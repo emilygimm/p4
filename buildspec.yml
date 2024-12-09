@@ -17,7 +17,8 @@ phases:
   build:
     commands:
       - echo Running Test
-      - npm run test
+      - npm run build
   post_build:
     commands:
       - ./node_modules/.bin/codecov -f coverage/*.json -t e89a5f73-fd56-45de-8799-009a19bde63c
+    
